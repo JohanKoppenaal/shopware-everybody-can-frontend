@@ -80,7 +80,8 @@ $h1-font-family: 'Inter', sans-serif;
         outline: none;
         font-size: 14px;
         color: $h1-gray;
-        min-width: 200px;
+        min-width: 400px;
+        flex: 1;
 
         &::placeholder {
             color: $h1-gray;
