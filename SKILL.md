@@ -283,6 +283,158 @@ Download DIE node, niet de parent frame
 
 **Tip:** In Figma, klik door naar de vector zelf en kopieer die node-id.
 
+### 11. Gebruik Bootstrap Media Queries
+
+Shopware gebruikt Bootstrap. Gebruik ALTIJD Bootstrap breakpoints, niet custom px waarden.
+
+**FOUT:**
+```scss
+// FOUT - custom breakpoints
+@media (max-width: 768px) {
+    // ...
+}
+```
+
+**GOED:**
+```scss
+// GOED - Bootstrap breakpoints via Shopware variabelen
+@include media-breakpoint-down(md) {
+    // tablet en kleiner
+}
+
+@include media-breakpoint-down(sm) {
+    // mobile
+}
+
+@include media-breakpoint-up(lg) {
+    // desktop
+}
+```
+
+**Bootstrap breakpoints in Shopware:**
+- `xs`: 0
+- `sm`: 576px
+- `md`: 768px
+- `lg`: 992px
+- `xl`: 1200px
+- `xxl`: 1400px
+
+**FOUT die we maakten:** Custom `@media (max-width: 768px)` i.p.v. Bootstrap mixins.
+
+### 12. SCSS Bestandsstructuur: Splits per Component
+
+**FOUT:**
+```
+scss/
+└── base.scss        # ALLES in één bestand
+```
+
+**GOED:**
+```
+scss/
+├── base.scss                    # Imports alleen
+├── _variables.scss              # Design tokens
+├── components/
+│   ├── _footer.scss
+│   ├── _footer-newsletter.scss
+│   ├── _footer-usp.scss
+│   └── _footer-copyright.scss
+└── utilities/
+    └── _icons.scss
+```
+
+**base.scss bevat alleen imports:**
+```scss
+// base.scss
+@import 'variables';
+@import 'components/footer';
+@import 'components/footer-newsletter';
+@import 'components/footer-usp';
+@import 'components/footer-copyright';
+```
+
+**FOUT die we maakten:** Alles in base.scss gezet (350+ regels), moeilijk te onderhouden.
+
+### 13. Gebruik REM voor Spacing, NIET Pixels
+
+**FOUT:**
+```scss
+// FOUT - pixels
+.element {
+    padding: 32px 0;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+```
+
+**GOED:**
+```scss
+// GOED - rem (schaalt met browser font-size)
+.element {
+    padding: 2rem 0;          // 32px bij 16px base
+    margin-bottom: 0.5rem;    // 8px
+    font-size: 0.875rem;      // 14px
+}
+```
+
+**Of gebruik Shopware spacing variabelen:**
+```scss
+.element {
+    padding: $spacer * 2;     // 2rem
+    margin-bottom: $spacer-sm;
+}
+```
+
+**Conversie: px → rem (base 16px):**
+- 8px = 0.5rem
+- 12px = 0.75rem
+- 14px = 0.875rem
+- 16px = 1rem
+- 24px = 1.5rem
+- 32px = 2rem
+- 48px = 3rem
+
+**FOUT die we maakten:** Alle spacing in pixels, schaalt niet goed.
+
+### 14. Volg Shopware Conventies
+
+Bekijk ALTIJD eerst hoe Shopware het zelf doet voordat je iets nieuws maakt.
+
+**Check deze bestanden voor conventies:**
+```
+vendor/shopware/storefront/Resources/app/storefront/src/scss/
+├── _variables.scss          # Alle Shopware variabelen
+├── abstract/
+│   └── _mixins.scss         # Beschikbare mixins
+├── component/
+│   └── _footer.scss         # Hoe Shopware footer styled
+└── skin/
+    └── _shopware.scss       # Theme overrides
+```
+
+**Beschikbare Shopware variabelen:**
+```scss
+// Kleuren
+$sw-color-brand-primary
+$sw-color-brand-secondary
+$sw-background-color
+
+// Spacing
+$spacer
+$spacer-sm
+$spacer-lg
+
+// Typography
+$font-family-base
+$font-size-base
+$line-height-base
+
+// Breakpoints (Bootstrap)
+$grid-breakpoints
+```
+
+**FOUT die we maakten:** Eigen variabelen gemaakt zonder te checken wat Shopware al heeft.
+
 ---
 
 ## PLAYWRIGHT TESTING WORKFLOW
@@ -414,6 +566,10 @@ npx playwright test --update-snapshots
 - [ ] ALLE teksten via snippet systeem (geen hardcoded strings!)
 - [ ] Payment/shipping icons DYNAMISCH (niet hardcoded)
 - [ ] Icons via sw_include of sw_icon (geen inline SVG)
+- [ ] Bootstrap media queries gebruikt (`@include media-breakpoint-down()`)
+- [ ] SCSS gesplitst per component (niet alles in base.scss)
+- [ ] Spacing in REM (niet pixels)
+- [ ] Shopware variabelen gebruikt waar beschikbaar
 
 ### Na implementatie:
 - [ ] `bin/console theme:compile` gerund
@@ -439,6 +595,10 @@ npx playwright test --update-snapshots
 | **Payment icons niet aanpasbaar** | Hardcoded SVGs | Gebruik `sw_include` voor payment logos |
 | **Icons niet herbruikbaar** | Inline SVG in templates | Maak icon component met `sw_include` |
 | **Icons hebben witruimte** | Frame gedownload i.p.v. path | Download vector op detail niveau in Figma |
+| **Responsive werkt inconsistent** | Custom px breakpoints | Gebruik Bootstrap `@include media-breakpoint-down()` |
+| **SCSS onleesbaar** | Alles in één bestand | Split per component: `_footer.scss`, `_newsletter.scss` |
+| **Schaalt niet goed** | Pixels voor spacing | Gebruik rem: 32px → 2rem |
+| **Dubbel werk** | Eigen variabelen gemaakt | Check eerst Shopware's `_variables.scss` |
 
 ---
 

@@ -153,6 +153,38 @@ test.describe('[Component] Figma Validation', () => {
     - Don't download the 24x24 frame → includes whitespace
     - Download the VECTOR/PATH node inside → exact shape only
 
+11. **Use Bootstrap Media Queries**: Not custom pixel values
+    ```scss
+    // WRONG
+    @media (max-width: 768px) { }
+
+    // RIGHT
+    @include media-breakpoint-down(md) { }
+    ```
+
+12. **Split SCSS per Component**: Not everything in base.scss
+    ```
+    scss/
+    ├── base.scss              # imports only
+    ├── _variables.scss
+    └── components/
+        ├── _footer.scss
+        └── _footer-newsletter.scss
+    ```
+
+13. **Use REM for Spacing**: Not pixels
+    ```scss
+    // WRONG
+    padding: 32px;
+
+    // RIGHT
+    padding: 2rem;  // 32px at 16px base
+    ```
+
+14. **Follow Shopware Conventions**: Check existing code first
+    - Look at `vendor/shopware/storefront/Resources/app/storefront/src/scss/`
+    - Use Shopware variables: `$spacer`, `$sw-color-brand-primary`
+
 ### Phase 4: Validation Loop
 
 ```bash
@@ -183,6 +215,10 @@ Before marking complete, verify:
 - [ ] **ALL texts via snippet system** (no hardcoded strings)
 - [ ] **Payment icons dynamic** (not hardcoded SVGs)
 - [ ] **Icons via sw_include** (not inline SVG)
+- [ ] **Bootstrap media queries** (not custom px breakpoints)
+- [ ] **SCSS split per component** (not all in base.scss)
+- [ ] **Spacing in REM** (not pixels)
+- [ ] **Shopware variables used** where available
 - [ ] All Playwright tests pass
 - [ ] Diff images reviewed and approved
 - [ ] **Mobile tested** (collapse/expand works)
@@ -203,3 +239,7 @@ Before marking complete, verify:
 | **Payment icons not editable** | Use dynamic `sw_include` not hardcoded SVG |
 | **Icons not reusable** | Create icon component, use `sw_include` |
 | **Icons have padding** | Download vector PATH in Figma, not parent frame |
+| **Responsive inconsistent** | Use Bootstrap `@include media-breakpoint-down()` |
+| **SCSS unreadable** | Split per component: `_footer.scss` |
+| **Doesn't scale** | Use rem not px: 32px → 2rem |
+| **Reinventing wheel** | Check Shopware's `_variables.scss` first |
