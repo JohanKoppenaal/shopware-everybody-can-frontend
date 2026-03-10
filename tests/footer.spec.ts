@@ -6,7 +6,7 @@ import { test, expect } from '@playwright/test';
  * Test voor back-enders om footer wijzigingen te valideren tegen Figma design
  */
 
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = 'http://localhost:8888';
 
 test.describe('Footer Component Tests', () => {
 
