@@ -144,6 +144,111 @@ test.describe('Footer Figma Design Validation', () => {
     });
   });
 
+  // ============================================
+  // FIGMA BASELINE COMPARISON
+  // Vergelijkt implementatie direct met Figma export
+  // ============================================
+
+  test('figma comparison: footer matches Figma design', async ({ page }) => {
+    // Set exact Figma viewport (1920px breed)
+    await page.setViewportSize({ width: 1920, height: 1080 });
+
+    const footer = page.locator('footer.footer-main');
+    await footer.scrollIntoViewIfNeeded();
+
+    // Screenshot van de implementatie - vergelijk met Figma baseline
+    // Baseline: tests/figma-baselines/figma-footer-desktop.png (direct uit Figma)
+    await expect(footer).toHaveScreenshot('footer-vs-figma.png', {
+      maxDiffPixelRatio: 0.15, // 15% tolerantie voor kleine verschillen
+      threshold: 0.3, // pixel threshold
+    });
+  });
+
+  // ============================================
+  // COMPONENT-LEVEL VISUAL TESTS
+  // Test individuele onderdelen apart
+  // ============================================
+
+  test('component: newsletter section visual', async ({ page }) => {
+    const newsletter = page.locator('.h1-footer-newsletter');
+    if (await newsletter.count() > 0) {
+      await newsletter.scrollIntoViewIfNeeded();
+      await expect(newsletter).toHaveScreenshot('component-newsletter.png', {
+        maxDiffPixelRatio: 0.05,
+      });
+    }
+  });
+
+  test('component: USP bar visual', async ({ page }) => {
+    const uspBar = page.locator('.h1-footer-usp');
+    if (await uspBar.count() > 0) {
+      await uspBar.scrollIntoViewIfNeeded();
+      await expect(uspBar).toHaveScreenshot('component-usp-bar.png', {
+        maxDiffPixelRatio: 0.05,
+      });
+    }
+  });
+
+  test('component: footer columns visual', async ({ page }) => {
+    const columns = page.locator('.h1-footer-columns');
+    if (await columns.count() > 0) {
+      await columns.scrollIntoViewIfNeeded();
+      await expect(columns).toHaveScreenshot('component-columns.png', {
+        maxDiffPixelRatio: 0.05,
+      });
+    }
+  });
+
+  test('component: copyright bar visual', async ({ page }) => {
+    const copyright = page.locator('.h1-footer-copyright');
+    if (await copyright.count() > 0) {
+      await copyright.scrollIntoViewIfNeeded();
+      await expect(copyright).toHaveScreenshot('component-copyright.png', {
+        maxDiffPixelRatio: 0.05,
+      });
+    }
+  });
+
+  // ============================================
+  // CSS PROPERTY VALIDATION
+  // Valideert specifieke design tokens uit Figma
+  // ============================================
+
+  test('css: newsletter has correct background color', async ({ page }) => {
+    const newsletter = page.locator('.h1-footer-newsletter');
+    if (await newsletter.count() > 0) {
+      await expect(newsletter).toHaveCSS('background-color', COLORS.secondary);
+    }
+  });
+
+  test('css: newsletter button has primary color', async ({ page }) => {
+    const button = page.locator('.h1-footer-newsletter-button');
+    if (await button.count() > 0) {
+      await expect(button).toHaveCSS('background-color', COLORS.primary);
+    }
+  });
+
+  test('css: USP text has correct font weight', async ({ page }) => {
+    const uspText = page.locator('.h1-footer-usp-text').first();
+    if (await uspText.count() > 0) {
+      await expect(uspText).toHaveCSS('font-weight', '700');
+    }
+  });
+
+  test('css: copyright bar has light background', async ({ page }) => {
+    const copyright = page.locator('.h1-footer-copyright');
+    if (await copyright.count() > 0) {
+      await expect(copyright).toHaveCSS('background-color', COLORS.light);
+    }
+  });
+
+  test('css: footer columns have white background', async ({ page }) => {
+    const columns = page.locator('.h1-footer-columns');
+    if (await columns.count() > 0) {
+      await expect(columns).toHaveCSS('background-color', COLORS.white);
+    }
+  });
+
 });
 
 /**

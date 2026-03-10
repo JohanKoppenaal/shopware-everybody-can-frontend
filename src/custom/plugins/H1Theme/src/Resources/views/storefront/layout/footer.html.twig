@@ -22,7 +22,7 @@
                 <div class="container">
                     <div class="h1-footer-newsletter-content">
                         <div class="h1-footer-newsletter-text">
-                            <h3 class="h1-footer-newsletter-title">Subscribe & get 10% OFF for first order</h3>
+                            <h3 class="h1-footer-newsletter-title">Subscribe & get <span class="h1-highlight">10% OFF</span> for first order</h3>
                             <p class="h1-footer-newsletter-subtitle">By proceeding, you confirm that you accept our privacy policy and terms.</p>
                         </div>
                         <form class="h1-footer-newsletter-form">
@@ -36,26 +36,42 @@
             </div>
         {% endblock %}
 
-        {# H1 USP Bar #}
+        {# H1 USP Bar - Icons direct uit Figma #}
         {% block layout_footer_h1_usp %}
             <div class="h1-footer-usp">
                 <div class="container">
                     <div class="h1-footer-usp-items">
                         <div class="h1-footer-usp-item">
-                            <span class="h1-footer-usp-icon">{% sw_icon 'delivery-truck' %}</span>
-                            <span class="h1-footer-usp-text">FREE SHIPPING</span>
+                            <span class="h1-footer-usp-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.96456 18C8.72194 19.6961 7.26324 21 5.5 21C3.73676 21 2.27806 19.6961 2.03544 18H1V6C1 5.44772 1.44772 5 2 5H16C16.5523 5 17 5.44772 17 6V8H20L23 12.0557V18H20.9646C20.7219 19.6961 19.2632 21 17.5 21C15.7368 21 14.2781 19.6961 14.0354 18H8.96456ZM15 7H3V15.0505C3.63526 14.4022 4.52066 14 5.5 14C6.8962 14 8.10145 14.8175 8.66318 16H14.3368C14.5045 15.647 14.7296 15.3264 15 15.0505V7ZM17 13H21V12.715L18.9917 10H17V13ZM17.5 19C18.1531 19 18.7087 18.5826 18.9146 18C18.9699 17.8436 19 17.6753 19 17.5C19 16.6716 18.3284 16 17.5 16C16.6716 16 16 16.6716 16 17.5C16 17.6753 16.0301 17.8436 16.0854 18C16.2913 18.5826 16.8469 19 17.5 19ZM7 17.5C7 16.6716 6.32843 16 5.5 16C4.67157 16 4 16.6716 4 17.5C4 17.6753 4.03008 17.8436 4.08535 18C4.29127 18.5826 4.84689 19 5.5 19C6.15311 19 6.70873 18.5826 6.91465 18C6.96992 17.8436 7 17.6753 7 17.5Z" fill="#F25305"/>
+                                </svg>
+                            </span>
+                            <span class="h1-footer-usp-text">Free Shipping</span>
                         </div>
                         <div class="h1-footer-usp-item">
-                            <span class="h1-footer-usp-icon">{% sw_icon 'clock' %}</span>
-                            <span class="h1-footer-usp-text">FAST DELIVERY</span>
+                            <span class="h1-footer-usp-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12H4C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C9.25022 4 6.82447 5.38734 5.38451 7.50024L8 7.5V9.5H2V3.5H4L3.99989 5.99918C5.82434 3.57075 8.72873 2 12 2ZM13 7L12.9998 11.585L16.2426 14.8284L14.8284 16.2426L10.9998 12.413L11 7H13Z" fill="#F25305"/>
+                                </svg>
+                            </span>
+                            <span class="h1-footer-usp-text">Fast delivery</span>
                         </div>
                         <div class="h1-footer-usp-item">
-                            <span class="h1-footer-usp-icon">{% sw_icon 'checkmark-circle' %}</span>
-                            <span class="h1-footer-usp-text">MONEY-BACK GUARANTEE</span>
+                            <span class="h1-footer-usp-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.0072 2.10365C8.60556 1.64993 7.08193 2.28104 6.41168 3.59294L5.6059 5.17011C5.51016 5.35751 5.35775 5.50992 5.17036 5.60566L3.59318 6.41144C2.28128 7.08169 1.65018 8.60532 2.10389 10.0069L2.64935 11.6919C2.71416 11.8921 2.71416 12.1077 2.64935 12.3079L2.10389 13.9929C1.65018 15.3945 2.28129 16.9181 3.59318 17.5883L5.17036 18.3941C5.35775 18.4899 5.51016 18.6423 5.6059 18.8297L6.41169 20.4068C7.08194 21.7187 8.60556 22.3498 10.0072 21.8961L11.6922 21.3507C11.8924 21.2859 12.1079 21.2859 12.3081 21.3507L13.9931 21.8961C15.3947 22.3498 16.9183 21.7187 17.5886 20.4068L18.3944 18.8297C18.4901 18.6423 18.6425 18.4899 18.8299 18.3941L20.4071 17.5883C21.719 16.9181 22.3501 15.3945 21.8964 13.9929L21.3509 12.3079C21.2861 12.1077 21.2861 11.8921 21.3509 11.6919L21.8964 10.0069C22.3501 8.60531 21.719 7.08169 20.4071 6.41144L18.8299 5.60566C18.6425 5.50992 18.4901 5.3575 18.3944 5.17011L17.5886 3.59294C16.9183 2.28104 15.3947 1.64993 13.9931 2.10365L12.3081 2.6491C12.1079 2.71391 11.8924 2.71391 11.6922 2.6491L10.0072 2.10365ZM8.19271 4.50286C8.41612 4.06556 8.924 3.8552 9.39119 4.00643L11.0762 4.55189C11.6768 4.74632 12.3235 4.74632 12.9241 4.55189L14.6091 4.00643C15.0763 3.8552 15.5841 4.06556 15.8076 4.50286L16.6133 6.08004C16.9006 6.64222 17.3578 7.09946 17.92 7.38668L19.4972 8.19246C19.9345 8.41588 20.1448 8.92375 19.9936 9.39095L19.4481 11.076C19.2537 11.6766 19.2537 12.3232 19.4481 12.9238L19.9936 14.6088C20.1448 15.076 19.9345 15.5839 19.4972 15.8073L17.92 16.6131C17.3578 16.9003 16.9006 17.3576 16.6133 17.9197L15.8076 19.4969C15.5841 19.9342 15.0763 20.1446 14.6091 19.9933L12.9241 19.4479C12.3235 19.2535 11.6768 19.2535 11.0762 19.4479L9.3912 19.9933C8.924 20.1446 8.41612 19.9342 8.19271 19.4969L7.38692 17.9197C7.09971 17.3576 6.64246 16.9003 6.08028 16.6131L4.50311 15.8073C4.06581 15.5839 3.85544 15.076 4.00668 14.6088L4.55213 12.9238C4.74656 12.3232 4.74656 11.6766 4.55213 11.076L4.00668 9.39095C3.85544 8.92375 4.06581 8.41588 4.50311 8.19246L6.08028 7.38668C6.64246 7.09946 7.09971 6.64222 7.38692 6.08004L8.19271 4.50286ZM6.75972 11.7573L11.0023 15.9999L18.0734 8.92885L16.6592 7.51464L11.0023 13.1715L8.17394 10.343L6.75972 11.7573Z" fill="#F25305"/>
+                                </svg>
+                            </span>
+                            <span class="h1-footer-usp-text">Money-Back Guarantee</span>
                         </div>
                         <div class="h1-footer-usp-item">
-                            <span class="h1-footer-usp-icon">{% sw_icon 'lock' %}</span>
-                            <span class="h1-footer-usp-text">SECURE PAYMENTS</span>
+                            <span class="h1-footer-usp-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 1L20.2169 2.82598C20.6745 2.92766 21 3.33347 21 3.80217V13.7889C21 15.795 19.9974 17.6684 18.3282 18.7812L12 23L5.6718 18.7812C4.00261 17.6684 3 15.795 3 13.7889V3.80217C3 3.33347 3.32553 2.92766 3.78307 2.82598L12 1ZM12 3.04879L5 4.60434V13.7889C5 15.1263 5.6684 16.3752 6.7812 17.1171L12 20.5963L17.2188 17.1171C18.3316 16.3752 19 15.1263 19 13.7889V4.60434L12 3.04879ZM16.4524 8.22183L17.8666 9.63604L11.5026 16L7.25999 11.7574L8.67421 10.3431L11.5019 13.1709L16.4524 8.22183Z" fill="#F25305"/>
+                                </svg>
+                            </span>
+                            <span class="h1-footer-usp-text">Secure Payments</span>
                         </div>
                     </div>
                 </div>
@@ -74,9 +90,43 @@
             <div class="h1-footer-copyright">
                 <div class="container">
                     <div class="h1-footer-copyright-content">
-                        <p class="h1-footer-copyright-text">{{ 'footer.copyrightInfo'|trans|sw_sanitize }}</p>
+                        <p class="h1-footer-copyright-text">Copyright &copy; shopware AG - All rights reserved</p>
                         <div class="h1-footer-payment-icons">
-                            {# Payment icons worden gerenderd in de footer/footer.html.twig #}
+                            {# Payment method icons - Figma design toont: Mastercard, Maestro, Visa, PayPal, Klarna, Apple Pay #}
+                            <span class="h1-payment-icon h1-payment-mastercard" title="Mastercard">
+                                <svg viewBox="0 0 37 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="37" height="24" rx="4" fill="white"/>
+                                    <circle cx="14" cy="12" r="7" fill="#EB001B"/>
+                                    <circle cx="23" cy="12" r="7" fill="#F79E1B"/>
+                                    <path d="M18.5 6.5a7 7 0 010 11 7 7 0 000-11z" fill="#FF5F00"/>
+                                </svg>
+                            </span>
+                            <span class="h1-payment-icon h1-payment-visa" title="Visa">
+                                <svg viewBox="0 0 37 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="37" height="24" rx="4" fill="white"/>
+                                    <path d="M15.5 16h-2l1.25-8h2l-1.25 8zm7-8l-2 5.5-.25-1.25-.75-3.75s-.1-.5-.75-.5h-3l-.05.25s.85.2 1.85.75l1.5 5.75h2l3.25-7.75h-1.8zm5.5 5.5c0 .5.5.75 1 1l1 .5c.5.25.75.5.75 1s-.25.75-.75.75c-.75 0-1.25-.5-1.25-.5l-.25 1s.75.5 1.75.5c1.25 0 2-.75 2-1.75 0-1.5-2-1.5-2-2.25 0-.25.25-.5.75-.5s1 .25 1 .25l.25-1s-.75-.25-1.25-.25c-1.25 0-2.25.75-2.25 2zm-5 2.5h1.75l.25-1h-2l.5-1.25h1.5l.25-1h-1.5l.5-1.25h2l.25-1h-3.75l-1.75 5.5h2z" fill="#1434CB"/>
+                                </svg>
+                            </span>
+                            <span class="h1-payment-icon h1-payment-paypal" title="PayPal">
+                                <svg viewBox="0 0 37 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="37" height="24" rx="4" fill="white"/>
+                                    <path d="M14 7h3c2 0 3 1 2.75 2.75-.25 2-1.75 3.25-3.75 3.25h-1l-.5 2.5h-2l1.5-8.5zm2 4.5h.75c.75 0 1.25-.5 1.5-1.25.1-.75-.25-1.25-1-1.25h-.75l-.5 2.5z" fill="#003087"/>
+                                    <path d="M20 9h3c2 0 3 1 2.75 2.75-.25 2-1.75 3.25-3.75 3.25h-1l-.5 2.5h-2l1.5-8.5z" fill="#009CDE"/>
+                                </svg>
+                            </span>
+                            <span class="h1-payment-icon h1-payment-klarna" title="Klarna">
+                                <svg viewBox="0 0 37 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="37" height="24" rx="4" fill="#FFB3C7"/>
+                                    <path d="M10 8h2v8h-2V8zm4 0h2c0 2-1 3.5-2.5 4.5l3 3.5h-2.5l-2.5-3V8h2.5zm6 0h2v8h-2V8zm4.5 6.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" fill="#0A0B09"/>
+                                </svg>
+                            </span>
+                            <span class="h1-payment-icon h1-payment-applepay" title="Apple Pay">
+                                <svg viewBox="0 0 37 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="37" height="24" rx="4" fill="white" stroke="#DDD"/>
+                                    <path d="M11 9.5c.5-.75 1.25-1.25 2-1.25.75 0 1.5.5 2 1.25-.5.25-1.5 1-1.5 2.25 0 1.5 1.25 2.25 1.5 2.25-.25.5-.75 1.5-1.5 1.5-.5 0-1-.5-1.5-.5s-1 .5-1.5.5c-1 0-2-1.5-2-3.25 0-1.5.75-2.75 2-2.75.5 0 1 .25 1.5.25s.75-.25 1-.25zM12.5 7c0 .75-.5 1.25-1 1.5.5-.25.75-.75.75-1.25 0-.5-.25-1-.75-1.25.5.25 1 .5 1 1z" fill="black"/>
+                                    <text x="17" y="14" font-family="SF Pro, Arial" font-size="6" font-weight="600" fill="black">Pay</text>
+                                </svg>
+                            </span>
                         </div>
                     </div>
                 </div>
