@@ -1,0 +1,14 @@
+{
+    "name": "H1Theme",
+    "author": "H1",
+    "views": [
+        "@Storefront",
+        "@Plugins",
+        "@H1Theme"
+    ],
+    "style": [
+        "app/storefront/src/scss/base.scss"
+    ],
+    "script": [],
+    "asset": []
+}

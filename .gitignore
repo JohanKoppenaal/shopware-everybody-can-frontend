@@ -7,6 +7,9 @@ playwright-report/
 src/custom/apps/
 src/custom/static-plugins/
 src/custom/plugins/SwagPlatformDemoData/
+src/custom/plugins/DockwareSamplePlugin/
+src/custom/.htaccess
+src/custom/plugins/.gitignore
 
 # Claude Code settings (bevat API tokens)
 .claude/
