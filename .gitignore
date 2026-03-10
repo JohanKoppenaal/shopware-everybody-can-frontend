@@ -3,8 +3,10 @@ test-results/
 playwright-report/
 .playwright/
 
-# Shopware files from Docker container
-src/custom/
+# Shopware generated files (niet custom plugins)
+src/custom/apps/
+src/custom/static-plugins/
+src/custom/plugins/SwagPlatformDemoData/
 
 # Claude Code settings (bevat API tokens)
 .claude/

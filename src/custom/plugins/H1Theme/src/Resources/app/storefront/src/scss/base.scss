@@ -1,0 +1,259 @@
+/**
+ * H1 Theme - Footer Styling
+ * Based on Figma Design: https://www.figma.com/design/meHFNqt42k9ca1N5KcAfN5/H1-Shopware-Theme?node-id=35-1512
+ *
+ * Design Variables:
+ * - Primary: #F25305 (oranje)
+ * - Secondary: #111111 (donker)
+ * - White: #FFFFFF
+ * - Gray: #666666
+ * - Border: #DDDDDD
+ * - Light: #EEEEEE
+ * - Font: Inter
+ */
+
+// Variables
+$h1-primary: #F25305;
+$h1-secondary: #111111;
+$h1-white: #FFFFFF;
+$h1-gray: #666666;
+$h1-border: #DDDDDD;
+$h1-light: #EEEEEE;
+$h1-font-family: 'Inter', sans-serif;
+
+// Footer Base
+.h1-footer {
+    font-family: $h1-font-family;
+}
+
+// Newsletter Section
+.h1-footer-newsletter {
+    background-color: $h1-secondary;
+    padding: 32px 0;
+
+    .h1-footer-newsletter-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    .h1-footer-newsletter-title {
+        color: $h1-white;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin: 0 0 8px;
+    }
+
+    .h1-footer-newsletter-subtitle {
+        color: $h1-white;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.43;
+        margin: 0;
+    }
+
+    .h1-footer-newsletter-form {
+        flex-shrink: 0;
+    }
+
+    .h1-footer-newsletter-input-wrapper {
+        display: flex;
+        background-color: $h1-white;
+        border-radius: 6px;
+        padding: 8px 12px;
+    }
+
+    .h1-footer-newsletter-input {
+        border: none;
+        outline: none;
+        font-size: 14px;
+        color: $h1-gray;
+        min-width: 200px;
+
+        &::placeholder {
+            color: $h1-gray;
+        }
+    }
+
+    .h1-footer-newsletter-button {
+        background-color: $h1-primary;
+        color: $h1-white;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: darken($h1-primary, 10%);
+        }
+    }
+}
+
+// USP Bar
+.h1-footer-usp {
+    padding: 32px 0;
+    border-bottom: 1px solid $h1-border;
+
+    .h1-footer-usp-items {
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width: 768px) {
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+    }
+
+    .h1-footer-usp-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 24px;
+        border-right: 1px solid $h1-border;
+
+        &:last-child {
+            border-right: none;
+        }
+
+        @media (max-width: 768px) {
+            flex: 1 1 45%;
+            border-right: none;
+            padding: 0;
+        }
+    }
+
+    .h1-footer-usp-icon {
+        width: 24px;
+        height: 24px;
+        color: $h1-secondary;
+    }
+
+    .h1-footer-usp-text {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $h1-secondary;
+    }
+}
+
+// Footer Columns
+.h1-footer-columns {
+    padding: 30px 0;
+
+    .h1-footer-columns-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 30px;
+
+        @media (max-width: 992px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 576px) {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.h1-footer-column {
+    .h1-footer-column-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: $h1-secondary;
+        margin: 0 0 24px;
+    }
+
+    .h1-footer-column-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 2;
+            color: $h1-secondary;
+            text-decoration: none;
+
+            &:hover {
+                color: $h1-primary;
+            }
+        }
+    }
+}
+
+// Contact Column
+.h1-footer-column-contact {
+    .h1-footer-hours {
+        font-size: 12px;
+        color: $h1-secondary;
+        margin: 0 0 6px;
+    }
+
+    .h1-footer-phone {
+        font-size: 20px;
+        font-weight: 700;
+        color: $h1-secondary;
+        margin: 0 0 18px;
+    }
+
+    .h1-footer-address {
+        p {
+            font-size: 14px;
+            color: $h1-secondary;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        a {
+            color: $h1-secondary;
+            text-decoration: none;
+
+            &:hover {
+                color: $h1-primary;
+            }
+        }
+    }
+}
+
+// Copyright Bar
+.h1-footer-copyright {
+    background-color: $h1-light;
+    padding: 40px 0;
+
+    .h1-footer-copyright-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+
+    .h1-footer-copyright-text {
+        font-size: 14px;
+        color: $h1-secondary;
+        margin: 0;
+    }
+
+    .h1-footer-payment-icons {
+        display: flex;
+        gap: 20px;
+    }
+}

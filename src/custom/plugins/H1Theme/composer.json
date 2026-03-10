@@ -1,0 +1,31 @@
+{
+    "name": "h1/theme",
+    "description": "H1 Shopware Theme - Custom styling based on Figma design",
+    "version": "1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "H1"
+        }
+    ],
+    "require": {
+        "shopware/core": "~6.7.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "H1\\Theme\\H1Theme",
+        "label": {
+            "de-DE": "H1 Theme",
+            "en-GB": "H1 Theme"
+        },
+        "description": {
+            "de-DE": "Custom Shopware Theme basierend auf Figma Design",
+            "en-GB": "Custom Shopware Theme based on Figma design"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "H1\\Theme\\": "src/"
+        }
+    }
+}
