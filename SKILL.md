@@ -131,6 +131,158 @@ src/custom/plugins/[ThemeName]/src/Resources/views/storefront/
 
 **FOUT die we maakten:** `@Storefront` vergeten in style array, waardoor hele theme niet werkte.
 
+### 6. NOOIT Shopware JavaScript Functionaliteit Breken
+
+**KRITIEK:** Shopware's Storefront JS is gekoppeld aan specifieke classes en data-attributen. Als je die overschrijft of verwijdert, werkt de JS niet meer!
+
+**FOUT:**
+```twig
+{# FOUT - Shopware's collapse classes verwijderd #}
+<div class="h1-footer-column">
+    <h4>Menu titel</h4>
+    <div class="h1-footer-links">...</div>
+</div>
+```
+
+**GOED:**
+```twig
+{# GOED - Shopware's JS classes behouden #}
+<div class="footer-column h1-footer-column">
+    <div class="footer-column-headline" data-collapse-trigger>
+        Menu titel
+        <span class="footer-column-toggle"></span>
+    </div>
+    <div class="footer-column-content" data-collapse-target>...</div>
+</div>
+```
+
+**FOUT die we maakten:** Shopware classes overschreven waardoor mobiele collapse/expand niet meer werkte.
+
+**Regel:** BEHOUD altijd Shopware's:
+- `data-*` attributen (voor JS plugins)
+- Classes die beginnen met `footer-`, `nav-`, `offcanvas-` etc.
+- Collapse/toggle structuur
+
+### 7. Teksten via Snippet Systeem, NIET Hardcoded
+
+**FOUT:**
+```twig
+{# FOUT - hardcoded tekst #}
+<h2>Subscribe & get 10% OFF for first order</h2>
+<button>Signup</button>
+```
+
+**GOED:**
+```twig
+{# GOED - via Shopware snippets (meertalig!) #}
+<h2>{{ 'h1Theme.footer.newsletter.title'|trans|sw_sanitize }}</h2>
+<button>{{ 'h1Theme.footer.newsletter.button'|trans|sw_sanitize }}</button>
+```
+
+**En maak snippet bestand:**
+```
+src/custom/plugins/H1Theme/src/Resources/snippet/
+├── de_DE/
+│   └── storefront.de-DE.json
+├── en_GB/
+│   └── storefront.en-GB.json
+└── nl_NL/
+    └── storefront.nl-NL.json
+```
+
+```json
+// storefront.nl-NL.json
+{
+    "h1Theme": {
+        "footer": {
+            "newsletter": {
+                "title": "Schrijf je in & ontvang 10% korting",
+                "button": "Aanmelden"
+            }
+        }
+    }
+}
+```
+
+**FOUT die we maakten:** Alle teksten hardcoded waardoor meertaligheid niet mogelijk is.
+
+### 8. Payment Icons zijn DYNAMISCH - NIET Hardcoden
+
+**FOUT:**
+```twig
+{# FOUT - hardcoded payment icons #}
+<div class="payment-icons">
+    <svg><!-- Mastercard --></svg>
+    <svg><!-- Visa --></svg>
+    <svg><!-- PayPal --></svg>
+</div>
+```
+
+**GOED:**
+```twig
+{# GOED - dynamisch uit Shopware configuratie #}
+{% sw_include '@Storefront/storefront/layout/footer/footer-payment-logos.html.twig' %}
+```
+
+Of custom met Shopware's payment methods:
+```twig
+{% for paymentMethod in page.salesChannel.paymentMethods %}
+    {% if paymentMethod.media %}
+        <img src="{{ paymentMethod.media.url }}" alt="{{ paymentMethod.name }}">
+    {% endif %}
+{% endfor %}
+```
+
+**FOUT die we maakten:** Payment icons hardcoded waardoor admin ze niet kan aanpassen.
+
+### 9. Icons via sw_include, NIET Inline SVG
+
+**FOUT:**
+```twig
+{# FOUT - inline SVG in template #}
+<svg width="24" height="24" viewBox="0 0 24 24">
+    <path d="M12..."/>
+</svg>
+```
+
+**GOED:**
+```twig
+{# GOED - icon als apart bestand met sw_include #}
+{% sw_include '@H1Theme/storefront/utilities/icon.html.twig' with {
+    'name': 'shipping',
+    'size': 'md'
+} %}
+```
+
+Of gebruik Shopware's icon systeem:
+```twig
+{% sw_icon 'checkmark' style { 'size': 'sm' } %}
+```
+
+**FOUT die we maakten:** SVG's direct in Twig gezet, niet herbruikbaar en moeilijk te onderhouden.
+
+### 10. Figma Icons: Download op DETAIL Niveau
+
+**FOUT:**
+```
+Download: icon frame 24x24 → krijg je witruimte mee
+```
+
+**GOED:**
+```
+Download: alleen de PATH/SHAPE binnen het icon → exacte vector zonder padding
+```
+
+**In Figma MCP:**
+```
+Zoek in get_figma_data naar de diepste node (meestal type: "VECTOR" of "PATH")
+Download DIE node, niet de parent frame
+```
+
+**FOUT die we maakten:** Icons op frame-niveau gedownload (24x24 met padding) i.p.v. op path-niveau (alleen de vorm).
+
+**Tip:** In Figma, klik door naar de vector zelf en kopieer die node-id.
+
 ---
 
 ## PLAYWRIGHT TESTING WORKFLOW
@@ -258,6 +410,10 @@ npx playwright test --update-snapshots
 - [ ] CSS styled BEIDE custom EN Shopware classes
 - [ ] `@Storefront` in theme.json style array
 - [ ] Geen hardcoded content die uit CMS moet komen
+- [ ] Shopware JS classes/data-attributen BEHOUDEN (collapse, toggle, etc.)
+- [ ] ALLE teksten via snippet systeem (geen hardcoded strings!)
+- [ ] Payment/shipping icons DYNAMISCH (niet hardcoded)
+- [ ] Icons via sw_include of sw_icon (geen inline SVG)
 
 ### Na implementatie:
 - [ ] `bin/console theme:compile` gerund
@@ -278,6 +434,11 @@ npx playwright test --update-snapshots
 | Icons kloppen niet | Zelf gemaakt i.p.v. Figma | Download via Figma MCP |
 | Afmetingen kloppen niet | Niet goed naar Figma gekeken | Download Figma screenshot, vergelijk pixel-perfect |
 | Tests falen steeds | Geen goede baseline | Gebruik Figma export als baseline |
+| **Mobiel menu werkt niet** | Shopware JS classes verwijderd | Behoud `data-*` attributen en JS classes |
+| **Geen vertalingen** | Hardcoded teksten | Gebruik snippet systeem met `\|trans` |
+| **Payment icons niet aanpasbaar** | Hardcoded SVGs | Gebruik `sw_include` voor payment logos |
+| **Icons niet herbruikbaar** | Inline SVG in templates | Maak icon component met `sw_include` |
+| **Icons hebben witruimte** | Frame gedownload i.p.v. path | Download vector op detail niveau in Figma |
 
 ---
 
