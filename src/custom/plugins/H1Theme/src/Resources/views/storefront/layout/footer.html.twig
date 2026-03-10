@@ -111,8 +111,20 @@
                             {{ 'h1Theme.footer.copyright.text'|trans|sw_sanitize }}
                         </p>
                         <div class="h1-footer-payment-icons">
-                            {# Dynamic payment icons from Shopware configuration #}
-                            {% sw_include '@Storefront/storefront/layout/footer/footer-payment-logos.html.twig' %}
+                            {# Dynamic payment icons from Shopware - uses footer.paymentMethods #}
+                            {% if footer.paymentMethods|length > 0 %}
+                                {% for paymentMethod in footer.paymentMethods %}
+                                    {% if paymentMethod.media %}
+                                        <span class="h1-payment-icon" title="{{ paymentMethod.translated.name }}">
+                                            <img
+                                                src="{{ paymentMethod.media.url }}"
+                                                alt="{{ paymentMethod.media.translated.alt ?: paymentMethod.translated.name }}"
+                                                loading="lazy"
+                                            >
+                                        </span>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
