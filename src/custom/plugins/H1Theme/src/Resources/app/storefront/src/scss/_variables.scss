@@ -1,0 +1,21 @@
+/**
+ * H1 Theme Variables
+ * Based on Figma Design: https://www.figma.com/design/meHFNqt42k9ca1N5KcAfN5/H1-Shopware-Theme
+ *
+ * Note: Where possible, use Shopware's built-in variables:
+ * - $sw-color-brand-primary
+ * - $sw-color-brand-secondary
+ * - $spacer, $spacer-sm, $spacer-lg
+ * - $font-family-base
+ */
+
+// H1 Brand Colors (override Shopware defaults in theme config if needed)
+$h1-primary: #F25305 !default;
+$h1-secondary: #111111 !default;
+$h1-white: #FFFFFF !default;
+$h1-gray: #666666 !default;
+$h1-border: #DDDDDD !default;
+$h1-light: #EEEEEE !default;
+
+// Typography
+$h1-font-family: 'Inter', sans-serif !default;

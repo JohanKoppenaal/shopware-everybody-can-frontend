@@ -1,0 +1,23 @@
+{
+    "h1Theme": {
+        "footer": {
+            "newsletter": {
+                "title": "Subscribe & get",
+                "highlight": "10% OFF",
+                "titleEnd": "for first order",
+                "subtitle": "By proceeding, you confirm that you accept our privacy policy and terms.",
+                "placeholder": "Enter your email address",
+                "button": "Signup"
+            },
+            "usp": {
+                "shipping": "FREE SHIPPING",
+                "delivery": "FAST DELIVERY",
+                "guarantee": "MONEY-BACK GUARANTEE",
+                "secure": "SECURE PAYMENTS"
+            },
+            "copyright": {
+                "text": "Copyright \u00a9 shopware AG - All rights reserved"
+            }
+        }
+    }
+}

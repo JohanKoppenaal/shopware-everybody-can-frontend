@@ -1,0 +1,81 @@
+/**
+ * Footer Newsletter Section
+ * Figma: Dark background with email signup
+ */
+
+.h1-footer-newsletter {
+    background-color: $h1-secondary;
+    padding: 2rem 0; // 32px
+
+    .h1-footer-newsletter-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem; // 24px
+
+        @include media-breakpoint-down(md) {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    .h1-footer-newsletter-title {
+        color: $h1-white;
+        font-size: 1.5rem; // 24px
+        font-weight: 700;
+        line-height: 1.25;
+        margin: 0 0 0.5rem; // 8px
+    }
+
+    .h1-footer-newsletter-subtitle {
+        color: $h1-white;
+        font-size: 0.875rem; // 14px
+        font-weight: 400;
+        line-height: 1.43;
+        margin: 0;
+    }
+
+    .h1-footer-newsletter-form {
+        flex-shrink: 0;
+    }
+
+    .h1-footer-newsletter-input-wrapper {
+        display: flex;
+        background-color: $h1-white;
+        border-radius: 0.375rem; // 6px
+        padding: 0.5rem 0.75rem; // 8px 12px
+    }
+
+    .h1-footer-newsletter-input {
+        border: none;
+        outline: none;
+        font-size: 0.875rem; // 14px
+        color: $h1-gray;
+        min-width: 25rem; // 400px
+        flex: 1;
+
+        &::placeholder {
+            color: $h1-gray;
+        }
+
+        @include media-breakpoint-down(md) {
+            min-width: 12.5rem; // 200px on mobile
+        }
+    }
+
+    .h1-footer-newsletter-button {
+        background-color: $h1-primary;
+        color: $h1-white;
+        border: none;
+        border-radius: 0.375rem; // 6px
+        padding: 0.625rem 0.875rem; // 10px 14px
+        font-size: 0.75rem; // 12px
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: darken($h1-primary, 10%);
+        }
+    }
+}

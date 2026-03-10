@@ -1,0 +1,23 @@
+{
+    "h1Theme": {
+        "footer": {
+            "newsletter": {
+                "title": "Abonnieren &",
+                "highlight": "10% RABATT",
+                "titleEnd": "auf Ihre erste Bestellung",
+                "subtitle": "Mit der Anmeldung bestätigen Sie, dass Sie unsere Datenschutzrichtlinie und AGB akzeptieren.",
+                "placeholder": "E-Mail-Adresse eingeben",
+                "button": "Anmelden"
+            },
+            "usp": {
+                "shipping": "KOSTENLOSER VERSAND",
+                "delivery": "SCHNELLE LIEFERUNG",
+                "guarantee": "GELD-ZURÜCK-GARANTIE",
+                "secure": "SICHERE ZAHLUNG"
+            },
+            "copyright": {
+                "text": "Copyright \u00a9 shopware AG - Alle Rechte vorbehalten"
+            }
+        }
+    }
+}

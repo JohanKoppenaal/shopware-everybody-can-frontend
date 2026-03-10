@@ -1,0 +1,171 @@
+/**
+ * Footer Columns
+ * Styling for dynamic Shopware footer content
+ * IMPORTANT: Preserve Shopware's JS classes (footer-column, data-* attributes)
+ */
+
+.h1-footer-columns {
+    padding: 3rem 0; // 48px
+    background-color: $h1-white;
+
+    // Shopware footer columns grid
+    .footer-columns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.875rem; // 30px
+    }
+
+    // Shopware footer column - preserve JS functionality
+    .footer-column {
+        flex: 1;
+        min-width: 11.25rem; // 180px
+
+        @include media-breakpoint-down(md) {
+            flex: 1 1 100%;
+        }
+    }
+
+    // Column headlines - preserve Shopware's collapse functionality
+    .footer-headline,
+    .footer-column-headline {
+        font-size: 1rem; // 16px
+        font-weight: 700;
+        color: $h1-secondary;
+        margin: 0 0 1.5rem; // 24px
+        padding: 0;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+
+        @include media-breakpoint-up(lg) {
+            cursor: default;
+        }
+
+        a {
+            color: $h1-secondary;
+            text-decoration: none;
+
+            &:hover {
+                color: $h1-primary;
+            }
+        }
+
+        // Shopware collapse toggle - show only on mobile
+        .footer-column-toggle {
+            display: none;
+
+            @include media-breakpoint-down(md) {
+                display: inline-flex;
+                margin-left: auto;
+            }
+        }
+    }
+
+    // Column content - preserve Shopware's collapse behavior
+    .footer-column-content {
+        @include media-breakpoint-up(lg) {
+            // Always visible on desktop
+            display: block !important;
+            height: auto !important;
+            overflow: visible !important;
+        }
+    }
+
+    // Links in columns
+    .footer-link-item {
+        margin-bottom: 0.5rem; // 8px
+    }
+
+    .footer-link,
+    .footer-column-content a {
+        font-size: 0.875rem; // 14px
+        font-weight: 400;
+        line-height: 2;
+        color: $h1-secondary;
+        text-decoration: none;
+
+        &:hover {
+            color: $h1-primary;
+        }
+    }
+
+    // Contact/hotline section
+    .footer-contact {
+        .footer-contact-hotline {
+            font-size: 0.875rem; // 14px
+            color: $h1-secondary;
+            line-height: 1.6;
+        }
+
+        .footer-contact-form a {
+            color: $h1-primary;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    // Payment/shipping logos (Shopware dynamic)
+    .footer-logos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem; // 16px
+        margin-top: 2rem; // 32px
+        padding-top: 2rem; // 32px
+        border-top: 1px solid $h1-border;
+
+        .footer-logo {
+            img {
+                max-height: 2rem; // 32px
+                width: auto;
+            }
+        }
+    }
+
+    // Service menu in footer bottom
+    .footer-bottom {
+        margin-top: 2rem; // 32px
+        padding-top: 2rem; // 32px
+        border-top: 1px solid $h1-border;
+    }
+
+    .footer-service-menu-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem; // 24px
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .footer-service-menu-link {
+        font-size: 0.875rem; // 14px
+        color: $h1-gray;
+        text-decoration: none;
+
+        &:hover {
+            color: $h1-primary;
+        }
+    }
+
+    .footer-vat {
+        text-align: center;
+        margin-top: 1rem; // 16px
+
+        p {
+            font-size: 0.75rem; // 12px
+            color: $h1-gray;
+            margin: 0;
+        }
+    }
+
+    // Hide default Shopware copyright (we have custom one)
+    .footer-copyright {
+        display: none;
+    }
+}

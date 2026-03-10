@@ -1,0 +1,23 @@
+{
+    "h1Theme": {
+        "footer": {
+            "newsletter": {
+                "title": "Schrijf je in &",
+                "highlight": "10% KORTING",
+                "titleEnd": "op je eerste bestelling",
+                "subtitle": "Door je aan te melden bevestig je dat je ons privacybeleid en voorwaarden accepteert.",
+                "placeholder": "Vul je e-mailadres in",
+                "button": "Aanmelden"
+            },
+            "usp": {
+                "shipping": "GRATIS VERZENDING",
+                "delivery": "SNELLE LEVERING",
+                "guarantee": "NIET GOED, GELD TERUG",
+                "secure": "VEILIG BETALEN"
+            },
+            "copyright": {
+                "text": "Copyright \u00a9 shopware AG - Alle rechten voorbehouden"
+            }
+        }
+    }
+}
