@@ -5,3 +5,7 @@ playwright-report/
 
 # Shopware files from Docker container
 src/custom/
+
+# Claude Code settings (bevat API tokens)
+.claude/
+.mcp.json
